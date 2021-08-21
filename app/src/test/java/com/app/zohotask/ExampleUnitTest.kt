@@ -1,4 +1,4 @@
-package com.example.zohotask
+package com.app.zohotask
 
 import org.junit.Test
 

@@ -1,8 +1,8 @@
-package com.example.zohotask.viewModel
+package com.app.zohotask.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.zohotask.repository.MainRepository
+import com.app.zohotask.repository.MainRepository
 
 class MyViewModelFactory constructor(private val repository: MainRepository): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

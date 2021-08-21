@@ -1,18 +1,18 @@
-package com.example.zohotask.ui.adapter
+package com.app.zohotask.ui.adapter
 
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.zohotask.databinding.ItemListBinding
-import com.example.zohotask.model.DataModel
+import com.app.zohotask.databinding.ItemListBinding
+import com.app.zohotask.model.DataModel
 
 class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
     var data = mutableListOf<DataModel>()
-
     fun setDataList(data: List<DataModel>){
         this.data = data.toMutableList()
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {

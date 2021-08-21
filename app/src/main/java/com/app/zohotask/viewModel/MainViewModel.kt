@@ -1,9 +1,9 @@
-package com.example.zohotask.viewModel
+package com.app.zohotask.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.zohotask.model.DataModel
-import com.example.zohotask.repository.MainRepository
+import com.app.zohotask.model.DataModel
+import com.app.zohotask.repository.MainRepository
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

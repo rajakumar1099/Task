@@ -1,4 +1,4 @@
-package com.example.zohotask.utils
+package com.app.zohotask.utils
 
 object Constants {
     const val URL = "https://private-anon-b0267c467c-githubtrendingapi.apiary-mock.com/"

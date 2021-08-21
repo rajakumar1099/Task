@@ -6,7 +6,7 @@ plugins {
 android {
     compileSdk 31
     defaultConfig {
-        applicationId "com.example.zohotask"
+        applicationId "com.app.zohotask"
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -52,7 +52,6 @@ dependencies {
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'

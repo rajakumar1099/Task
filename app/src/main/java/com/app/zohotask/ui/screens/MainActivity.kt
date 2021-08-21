@@ -1,18 +1,23 @@
-package com.example.zohotask.ui.screens
+package com.app.zohotask.ui.screens
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.os.Handler
+import android.os.Looper
 import android.view.Menu
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.zohotask.API.APIClient
-import com.example.zohotask.R
-import com.example.zohotask.databinding.ActivityMainBinding
-import com.example.zohotask.repository.MainRepository
-import com.example.zohotask.ui.adapter.MainAdapter
-import com.example.zohotask.viewModel.MainViewModel
-import com.example.zohotask.viewModel.MyViewModelFactory
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.app.zohotask.API.APIClient
+import com.app.zohotask.R
+import com.app.zohotask.databinding.ActivityMainBinding
+import com.app.zohotask.repository.MainRepository
+import com.app.zohotask.ui.adapter.MainAdapter
+import com.app.zohotask.viewModel.MainViewModel
+import com.app.zohotask.viewModel.MyViewModelFactory
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,11 +31,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initView()
+    }
+
+    private fun initView(){
         binding.toolbar.title = getString(R.string.header_text)
+        binding.swipeToRefresh.setProgressBackgroundColorSchemeColor(ContextCompat.getColor(this,R.color.purple_700));
+        binding.swipeToRefresh.setColorSchemeColors(ContextCompat.getColor(this,R.color.white))
         setSupportActionBar(binding.toolbar)
+
         viewModel = ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService))).get(MainViewModel::class.java)
         setAdapter()
         loadAPI()
+        binding.swipeToRefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener{
+            override fun onRefresh() {
+                loadAPI()
+            }
+
+        })
     }
 
     private fun setAdapter() {
@@ -38,11 +56,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadAPI() {
+        binding.swipeToRefresh.isRefreshing = true
         viewModel.dataList.observe(this, Observer {
             adapter.setDataList(it)
-            adapter.notifyDataSetChanged()
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.swipeToRefresh.isRefreshing = false
+            }, 1000)
         })
         viewModel.errorMessage.observe(this, Observer {
+            binding.swipeToRefresh.isRefreshing = false
         })
         viewModel.getApiData()
     }

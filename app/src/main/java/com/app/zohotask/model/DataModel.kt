@@ -1,4 +1,4 @@
-package com.example.zohotask.model
+package com.app.zohotask.model
 
 import com.google.gson.annotations.SerializedName
 

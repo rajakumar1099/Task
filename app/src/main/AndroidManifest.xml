@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.zohotask">
+    package="com.app.zohotask">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZohoTask">
         <activity
-            android:name=".ui.screens.MainActivity"
+            android:name="com.app.zohotask.ui.screens.MainActivity"
             android:theme="@style/Theme.ZohoTask"
             android:exported="true">
             <intent-filter>
