@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -63,5 +66,13 @@ dependencies {
     //swipe to refresh
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
+    //room
+    implementation 'androidx.room:room-runtime:2.4.0-alpha04'
+    kapt 'androidx.room:room-compiler:2.4.0-alpha04'
+
+    //dagger
+
+    implementation 'com.google.dagger:hilt-android:2.33-beta'
+    kapt 'com.google.dagger:hilt-android-compiler:2.33-beta'
 
 }
