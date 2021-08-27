@@ -7,6 +7,7 @@
 # - Glide
 # - Material Components for Android
 # - Dagger Injection
+# - Room Database
 #
 # This project is developed in Kotlin with MVVM pattern with LiveData and ViewModel. Retrofit is used to Make Api Calls 
 # and Room Database is used here to save the data to the local database. Glide Library is used to load the Avatar Images.
